@@ -34,6 +34,7 @@ async function scrape(url, username, password) {
     await browser.close();
     console.log('Closing browser.');
   } catch (e) {
+    console.error(e);
     return {
       text: "Error: " + e,
       error: true,
