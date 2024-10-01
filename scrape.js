@@ -27,6 +27,7 @@ async function scrape(url, username, password) {
     for (const button of buttons) {
       const text = await button.evaluate((el) => el.textContent);
       if (text === "TiramiSu") {
+        console.log('Tiramisu!');
         await button.click();
       }
     }
