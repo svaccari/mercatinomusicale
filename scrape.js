@@ -23,6 +23,7 @@ async function scrape(url, username, password) {
     }
     await page.goto("https://www.mercatinomusicale.com/my/annunci.asp", { waitUntil: "networkidle0" });
     const buttons = await page.$$("a.btn_xsmall");
+    console.log(`Found ${buttons.length} buttons`);
     for (const button of buttons) {
       const text = await button.evaluate((el) => el.textContent);
       if (text === "TiramiSu") {
@@ -31,6 +32,7 @@ async function scrape(url, username, password) {
     }
     await page.waitForNetworkIdle();
     await browser.close();
+    console.log('Closing browser.');
   } catch (e) {
     return {
       text: "Error: " + e,
