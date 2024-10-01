@@ -3,7 +3,7 @@ const puppeteer = require("puppeteer");
 async function scrape(url, username, password) {
   console.log("scrape", url, username);
   try {
-    const browser = await puppeteer.launch({ headless: false, args: ["--disable-setuid-sandbox"], ignoreHTTPSErrors: true });
+    const browser = await puppeteer.launch({ headless: true, args: ["--disable-setuid-sandbox"], ignoreHTTPSErrors: true });
     const page = await browser.newPage();
     await page.setViewport({ width: 1200, height: 1200 });
     await page.goto(url, { waitUntil: "networkidle0" }); // wait until page load
